@@ -48,11 +48,20 @@ app.get<{phrase: string}>("/shout/:phrase", (req, res) => {
 })
 
 app.get<{num1: string, num2: string, num3: string}>("/add/:num1/:num2", (req, res) => {
-  const {num1, num2, num3} = req.params;
+  const {num1, num2} = req.params;
 
   res.json({
     original: `${num1} + ${num2}`,
     result: Number(num1)+Number(num2)
+  })
+})
+
+app.get<{num1: string, num2: string, num3: string}>("/add/:num1/:num2/:num3", (req, res) => {
+  const {num1, num2, num3} = req.params;
+
+  res.json({
+    original: `${num1} + ${num2} + ${num3}`,
+    result: Number(num1) + Number(num2) + Number(num3)
   })
 })
 
