@@ -65,6 +65,15 @@ app.get<{num1: string, num2: string, num3: string}>("/add/:num1/:num2/:num3", (r
   })
 })
 
+app.get<{food: string}>("/eat/:food", (req, res) => {
+  const {food} = req.params;
+  const prep = 'aeiou'.includes(food[0]) ? 'an' : 'a';
+
+  res.json({
+    message: `Yum yum - You ate ${prep} ${food}!`
+  })
+})
+
 app.get<{ numOne: string, numTwo: string }>("/multiply/:numOne/:numTwo", (req, res) => {
   /**
    * Note that `numOne` and `numTwo` are both typed as string.
