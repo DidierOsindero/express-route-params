@@ -26,7 +26,7 @@ app.get("/eat/carrot", (req, res) => {
   });
 });
 
-app.get("/echo/:exampleRouteParameter", (req, res) => {
+app.get <{ exampleRouteParameter: string }>("/echo/:exampleRouteParameter", (req, res) => {
   const echoContent = req.params.exampleRouteParameter;
   res.json({
     echo: echoContent,
@@ -34,7 +34,24 @@ app.get("/echo/:exampleRouteParameter", (req, res) => {
   });
 });
 
-app.get("/multiply/:numOne/:numTwo", (req, res) => {
+app.get<{phrase: string}>("/shout/:phrase", (req, res) => {
+
+  const {phrase} = req.params;
+
+  if (phrase === "hello" || phrase === "quick-brown-fox")
+  {res.json({
+    shout: phrase.toUpperCase()+"!",
+    result: `I am shouting back to you: ${phrase.toUpperCase()}!`
+  })} else {
+    res.json({message:"Nice Try..."})
+  }
+})
+
+app.get<{num1: string, num2: string, num3: string}>("/add/:num1/:num2/:num3", (req, res) => {
+  //if ()
+})
+
+app.get<{ numOne: string, numTwo: string }>("/multiply/:numOne/:numTwo", (req, res) => {
   /**
    * Note that `numOne` and `numTwo` are both typed as string.
    * (Hover over with your mouse to see!)
