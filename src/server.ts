@@ -47,7 +47,7 @@ app.get<{phrase: string}>("/shout/:phrase", (req, res) => {
   }
 })
 
-app.get<{num1: string, num2: string, num3: string}>("/add/:num1/:num2", (req, res) => {
+app.get<{num1: string, num2: string}>("/add/:num1/:num2", (req, res) => {
   const {num1, num2} = req.params;
 
   res.json({
